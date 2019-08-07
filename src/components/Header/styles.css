@@ -1,0 +1,13 @@
+
+header#app-header{
+    height: 60px;
+    width:  100%;
+    background-color: darkgrey;
+    font-size: 3em;
+    font-weight: 200;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
