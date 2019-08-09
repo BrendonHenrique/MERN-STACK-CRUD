@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import api from '../../services/api';
-
+import './style.css'
 export default class Main extends Component{
 
     constructor(props){
         super(props);
         this.state = { 
-            products: []
+            products: [],
+            productInfo: {},
+            page: 1,
+
         }
     }
     
@@ -14,25 +17,54 @@ export default class Main extends Component{
         this.loadProducts();
     }
         
-    loadProducts = async () => {
-        const response = await api.get('/products');
-        this.setState({products: response.data.docs})
+    loadProducts = async (page = 1) => {
+        const response = await api.get(`/products?page=${page}`);
+
+        const { docs, ...productInfo  } = response.data;
+
+        this.setState({products: docs, productInfo, page})
+    }
+
+    prevPage = () => {
+        const { page } = this.state;
+
+        if(page === 1) return;
+
+        const pageNumber = page - 1;
+
+        this.loadProducts(pageNumber);
+    }
+
+    nextPage = () => {
+        const { page, productInfo } = this.state;
+        
+        if( page === productInfo.pages) return;
+
+        const pageNumber = page + 1;
+
+        this.loadProducts(pageNumber);
+
     }
 
     render(){
-        
-        let { products } = this.state;
+        let { products, page, productInfo } = this.state;
+
         return (
+            <div className="product-list">
                 
-            <div className="products">
                 {products.map( product => (
-                    <article className="product-list" key={product._id}>
+                    <article key={product._id}>
                         <strong>{product.title}</strong>
                         <p>{product.description}</p>
                         <a href="">Acessar</a>
-                        <hr style={{marginBottom: 10, marginTop: 10}} />
                     </article>
-                ))} 
+                ))}
+
+                <div className="actions">
+                    <button disabled={page === 1} onClick={this.prevPage}>Anterior</button>
+                    <button disabled={page === productInfo.pages} onClick={this.nextPage}>Próximo</button>
+                </div>
+
             </div>
         );
     }

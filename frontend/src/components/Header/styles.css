@@ -1,13 +1,18 @@
 
-header#app-header{
-    height: 60px;
+#app-header{
+    height: 80px;
     width:  100%;
-    background-color: darkgrey;
+    background-color: #494850;
+    box-shadow: 0 7px 10px black;
     font-size: 3em;
     font-weight: 200;
     color: #FFF;
+    text-decoration: overline #C0C5C1 ;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0px;
 }
