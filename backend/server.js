@@ -6,7 +6,7 @@ const requireDir = require('require-dir')
 // Iniciando o server
 const app = Express();
 app.use(Express.json());
-app.use(cors);
+app.use(cors());
 
 // Iniciando o Db
 mongoose.connect('mongodb://localhost:27017/nodeapi',
@@ -22,7 +22,10 @@ requireDir("./src/models");
 // Redirecionando request /api para as rotas iniciadas no modulo requerido
 app.use('/api', require('./src/routes'));
 
-
+app.get('/', function (req, res) {
+    res.send('hello world')
+})
+  
 // Abrindo uma porta para o server escutar
 app.listen(3001);
 
