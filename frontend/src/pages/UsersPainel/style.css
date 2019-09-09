@@ -1,0 +1,44 @@
+
+.UserPanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+.userForm{
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #59566b;
+    width: 30rem;
+}
+
+.formHeader{
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.formButton{
+    width: 7rem;
+    height: 1.6rem;
+    margin-top: 2rem;
+    background-color: transparent;
+    border-color: darkred;
+    border-radius: 8px;
+    transition: all .3s linear; 
+}
+
+.formButton:hover{
+    border-color: red;
+}
+
+.UsersIndex{
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #59566b;
+    width: 30rem;
+}
+
+.IndexHeader{
+    font-size: 25px;
+}

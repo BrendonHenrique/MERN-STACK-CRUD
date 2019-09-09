@@ -10,7 +10,6 @@ export default class Main extends Component{
             products: [],
             productInfo: {},
             page: 1,
-
         }
     }
     

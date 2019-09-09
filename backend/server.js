@@ -15,17 +15,9 @@ mongoose.connect('mongodb://localhost:27017/nodeapi',
 requireDir("./src/models");
 
 
-// Obtendo acesso ao model Product
-// const Product = mongoose.model('Product');
-
-
 // Redirecionando request /api para as rotas iniciadas no modulo requerido
 app.use('/api', require('./src/routes'));
 
-app.get('/', function (req, res) {
-    res.send('hello world')
-})
-  
 // Abrindo uma porta para o server escutar
 app.listen(3001);
 
